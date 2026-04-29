@@ -1,38 +1,42 @@
-import { useState } from 'react'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { useToast } from '@/hooks/useToast'
+import { motion } from "framer-motion";
+import { Mail } from "lucide-react";
 
-export function Newsletter() {
-  const [email, setEmail] = useState('')
-  const { toast } = useToast()
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    toast({ title: 'Subscribed!', description: 'You\'ll receive our weekly recipe digest.' })
-    setEmail('')
-  }
-
+const Newsletter = () => {
   return (
-    <section className="py-16">
-      <div className="container">
-        <div className="mx-auto max-w-md text-center">
-          <h2 className="font-display text-2xl font-bold">Weekly Recipes in Your Inbox</h2>
-          <p className="mt-2 text-muted-foreground">
-            Subscribe to get the best recipes delivered every week.
+    <section className="py-12 lg:py-20 bg-primary/5">
+      <div className="container mx-auto px-4 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="max-w-xl mx-auto text-center space-y-5"
+        >
+          <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto">
+            <Mail className="w-5 h-5 text-primary" />
+          </div>
+          <h2 className="text-2xl lg:text-3xl font-display font-bold text-foreground">
+            Get Weekly Recipe Inspiration
+          </h2>
+          <p className="text-muted-foreground text-sm">
+            Curated recipes, cooking tips, and seasonal ingredients delivered to your inbox every Friday.
           </p>
-          <form onSubmit={handleSubmit} className="mt-6 flex gap-2">
-            <Input
+          <div className="flex gap-3 max-w-md mx-auto">
+            <input
               type="email"
-              placeholder="your@email.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
+              placeholder="Your email address"
+              className="flex-1 h-12 px-5 rounded-full bg-background shadow-card text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/20"
             />
-            <Button type="submit">Subscribe</Button>
-          </form>
-        </div>
+            <button className="h-12 px-6 bg-primary text-primary-foreground font-semibold rounded-full hover:opacity-90 transition-opacity text-sm whitespace-nowrap">
+              Subscribe
+            </button>
+          </div>
+          <p className="text-xs text-muted-foreground">
+            Join 50,000+ food lovers · No spam, unsubscribe anytime
+          </p>
+        </motion.div>
       </div>
     </section>
-  )
-}
+  );
+};
+
+export default Newsletter;

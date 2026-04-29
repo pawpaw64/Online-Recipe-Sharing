@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { SearchFilter } from '@/components/shared/SearchFilter'
+import SearchFilter from '@/components/shared/SearchFilter'
 import { RecipeGrid } from '@/components/shared/RecipeGrid'
 import { useRecipes } from '@/features/recipes/api'
 import { useFavorites, useToggleFavorite } from '@/features/favorites/api'
@@ -20,7 +20,7 @@ export default function CommunityPage() {
 
       <SearchFilter
         filters={filters}
-        onChange={(f) => setFilters({ ...f, page: 1, limit: 12 } as RecipeFilters)}
+        onChange={(f: RecipeFilters) => setFilters({ ...f, page: 1, limit: 12 })}
       />
 
       <div className="mt-8">

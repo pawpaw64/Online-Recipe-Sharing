@@ -2,7 +2,7 @@ import { lazy, Suspense } from 'react'
 import { createBrowserRouter } from 'react-router-dom'
 import RootLayout from '@/layouts/RootLayout'
 import AuthLayout from '@/layouts/AuthLayout'
-import { ProtectedRoute } from '@/components/shared/ProtectedRoute'
+import ProtectedRoute from '@/components/shared/ProtectedRoute'
 import { PageLoader } from '@/components/shared/PageLoader'
 
 const HomePage = lazy(() => import('@/pages/HomePage'))

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { SearchFilter } from '@/components/shared/SearchFilter'
+import SearchFilter from '@/components/shared/SearchFilter'
 import { RecipeGrid } from '@/components/shared/RecipeGrid'
 import { Button } from '@/components/ui/button'
 import { useRecipes } from '@/features/recipes/api'
@@ -23,7 +23,7 @@ export default function AllRecipesPage() {
 
       <SearchFilter
         filters={filters}
-        onChange={(f) => setFilters({ ...f, page: 1, limit: 12 } as RecipeFilters)}
+        onChange={(f: RecipeFilters) => setFilters({ ...f, page: 1, limit: 12 })}
       />
 
       <div className="mt-8">
