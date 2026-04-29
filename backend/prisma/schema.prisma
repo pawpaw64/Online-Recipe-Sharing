@@ -1,0 +1,148 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String         @id @default(uuid())
+  email         String         @unique
+  passwordHash  String         @map("password_hash")
+  fullName      String?        @map("full_name")
+  displayName   String?        @map("display_name")
+  avatarUrl     String?        @map("avatar_url")   @db.VarChar(500)
+  bio           String?        @db.Text
+  createdAt     DateTime       @default(now()) @map("created_at")
+  updatedAt     DateTime       @updatedAt      @map("updated_at")
+
+  recipes       Recipe[]
+  favorites     Favorite[]
+  comments      Comment[]
+  refreshTokens RefreshToken[]
+
+  @@map("users")
+}
+
+model RefreshToken {
+  id        String   @id @default(uuid())
+  userId    String   @map("user_id")
+  token     String   @unique @db.VarChar(512)
+  expiresAt DateTime @map("expires_at")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("refresh_tokens")
+}
+
+enum Difficulty {
+  Easy
+  Medium
+  Hard
+}
+
+model Recipe {
+  id           String        @id @default(uuid())
+  title        String
+  description  String?       @db.Text
+  imageUrl     String?       @map("image_url")     @db.VarChar(500)
+  authorId     String?       @map("author_id")
+  authorName   String        @default("Anonymous") @map("author_name")
+  authorAvatar String?       @map("author_avatar")
+  prepTime     String?       @map("prep_time")     @db.VarChar(50)
+  difficulty   Difficulty    @default(Easy)
+  category     String?       @db.VarChar(100)
+  rating       Decimal       @default(0)           @db.Decimal(3, 1)
+  reviewsCount Int           @default(0)           @map("reviews_count")
+  likesCount   Int           @default(0)           @map("likes_count")
+  servings     Int           @default(1)
+  calories     Int           @default(0)
+  youtubeId    String?       @map("youtube_id")    @db.VarChar(50)
+  popular      Boolean       @default(false)
+  createdAt    DateTime      @default(now())       @map("created_at")
+  updatedAt    DateTime      @updatedAt            @map("updated_at")
+
+  author       User?         @relation(fields: [authorId], references: [id], onDelete: SetNull)
+  ingredients  Ingredient[]
+  instructions Instruction[]
+  nutrition    Nutrition[]
+  tags         Tag[]
+  favorites    Favorite[]
+  comments     Comment[]
+
+  @@map("recipes")
+}
+
+model Ingredient {
+  id       Int    @id @default(autoincrement())
+  recipeId String @map("recipe_id")
+  item     String @db.Text
+  position Int    @default(0)
+
+  recipe Recipe @relation(fields: [recipeId], references: [id], onDelete: Cascade)
+
+  @@map("recipe_ingredients")
+}
+
+model Instruction {
+  id       Int    @id @default(autoincrement())
+  recipeId String @map("recipe_id")
+  step     String @db.Text
+  position Int    @default(0)
+
+  recipe Recipe @relation(fields: [recipeId], references: [id], onDelete: Cascade)
+
+  @@map("recipe_instructions")
+}
+
+model Nutrition {
+  id       Int    @id @default(autoincrement())
+  recipeId String @map("recipe_id")
+  label    String @db.VarChar(100)
+  value    String @db.VarChar(100)
+
+  recipe Recipe @relation(fields: [recipeId], references: [id], onDelete: Cascade)
+
+  @@map("recipe_nutrition")
+}
+
+model Tag {
+  id       Int    @id @default(autoincrement())
+  recipeId String @map("recipe_id")
+  tag      String @db.VarChar(100)
+
+  recipe Recipe @relation(fields: [recipeId], references: [id], onDelete: Cascade)
+
+  @@map("recipe_tags")
+}
+
+model Favorite {
+  id        String   @id @default(uuid())
+  userId    String   @map("user_id")
+  recipeId  String   @map("recipe_id")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  recipe Recipe @relation(fields: [recipeId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, recipeId])
+  @@map("favorites")
+}
+
+model Comment {
+  id        String   @id @default(uuid())
+  userId    String   @map("user_id")
+  recipeId  String   @map("recipe_id")
+  content   String   @db.Text
+  rating    Int?
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt      @map("updated_at")
+
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  recipe Recipe @relation(fields: [recipeId], references: [id], onDelete: Cascade)
+
+  @@map("comments")
+}
