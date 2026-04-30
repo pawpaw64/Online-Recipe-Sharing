@@ -8,7 +8,7 @@
     "build": "tsc",
     "start": "node dist/server.js",
     "prisma:migrate": "prisma migrate dev",
-    "prisma:seed": "ts-node --skip-project -e \"require('ts-node').register({project:'tsconfig.json'})\" prisma/seed.ts",
+    "prisma:seed": "ts-node --project tsconfig.json --transpile-only prisma/seed.ts",
     "prisma:studio": "prisma studio",
     "prisma:generate": "prisma generate"
   },

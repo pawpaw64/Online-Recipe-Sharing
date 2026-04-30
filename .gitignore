@@ -28,3 +28,11 @@ coverage/
 
 # temporary files
 .tmp/
+
+.codex
+# Ignore all markdown files
+*.md
+
+# Except this specific file
+!README.md
+!important-docs/*.md

@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback, useMemo, useRef } from "react";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
-import { ChevronLeft, ChevronRight, Clock, Star, ChefHat, Share2, PlusCircle } from "lucide-react";
+import { ChevronLeft, ChevronRight, Clock, Star, ChefHat, PlusCircle } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useRecipes } from "@/hooks/useRecipes";
 import { resolveRecipeImage } from "@/lib/recipe-images";

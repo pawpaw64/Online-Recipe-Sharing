@@ -2,6 +2,7 @@
   "name": "cookbook",
   "private": true,
   "scripts": {
+    "predev": "kill-port 5173 4000",
     "dev": "concurrently --names \"API,WEB\" --prefix-colors \"yellow.bold,cyan.bold\" \"npm run dev --prefix backend\" \"npm run dev --prefix frontend\"",
     "dev:backend": "npm run dev --prefix backend",
     "dev:frontend": "npm run dev --prefix frontend"
@@ -9,6 +10,7 @@
   "devDependencies": {
     "@vitejs/plugin-react": "^4.7.0",
     "concurrently": "^9.1.2",
+    "kill-port": "^2.0.1",
     "vite": "^6.4.2"
   }
 }
