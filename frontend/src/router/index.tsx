@@ -10,6 +10,7 @@ const AllRecipesPage = lazy(() => import('@/pages/AllRecipesPage'))
 const RecipeDetailPage = lazy(() => import('@/pages/RecipeDetailPage'))
 const AuthPage = lazy(() => import('@/pages/AuthPage'))
 const CommunityPage = lazy(() => import('@/pages/CommunityPage'))
+const CommunityGroupPage = lazy(() => import('@/pages/CommunityGroupPage'))
 const PostRecipePage = lazy(() => import('@/pages/PostRecipePage'))
 const MyRecipesPage = lazy(() => import('@/pages/MyRecipesPage'))
 const ProfilePage = lazy(() => import('@/pages/ProfilePage'))
@@ -28,6 +29,7 @@ export const router = createBrowserRouter([
       { path: '/recipes', element: wrap(<AllRecipesPage />) },
       { path: '/recipes/:id', element: wrap(<RecipeDetailPage />) },
       { path: '/community', element: wrap(<CommunityPage />) },
+      { path: '/community/:slug', element: wrap(<CommunityGroupPage />) },
       {
         path: '/post-recipe',
         element: wrap(
