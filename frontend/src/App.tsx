@@ -2,6 +2,7 @@ import { RouterProvider } from 'react-router-dom'
 import { QueryProvider } from '@/providers/QueryProvider'
 import { ThemeProvider } from '@/providers/ThemeProvider'
 import { AuthProvider } from '@/providers/AuthProvider'
+import { ToastProvider } from '@/providers/ToastProvider'
 import { router } from '@/router'
 
 export default function App() {
@@ -9,7 +10,9 @@ export default function App() {
     <QueryProvider>
       <ThemeProvider>
         <AuthProvider>
-          <RouterProvider router={router} />
+          <ToastProvider>
+            <RouterProvider router={router} />
+          </ToastProvider>
         </AuthProvider>
       </ThemeProvider>
     </QueryProvider>

@@ -61,7 +61,7 @@ const HeroSection = () => {
 
   if (heroRecipes.length === 0 || !activeRecipe) {
     return (
-      <section className="relative pt-24 pb-8 lg:pt-28 lg:pb-16">
+      <section className="relative pt-4 pb-8 lg:pb-16">
         <div className="container mx-auto px-4 lg:px-8">
           <Skeleton className="h-[400px] w-full rounded-2xl" />
         </div>
@@ -70,7 +70,7 @@ const HeroSection = () => {
   }
 
   return (
-    <section className="relative pt-24 pb-8 lg:pt-28 lg:pb-16">
+    <section className="relative pt-24 pb-8 lg:pb-16">
       {/* Background blobs — overflow clipped here so the section itself doesn't clip tooltip children */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/3 w-[700px] h-[700px] lg:w-[1000px] lg:h-[900px] rounded-full bg-secondary/60 blur-3xl" />
