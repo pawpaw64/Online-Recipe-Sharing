@@ -62,7 +62,7 @@ async function main() {
       popular: true,
       rating: 4.8,
       reviewsCount: 142,
-      youtubeId: 'RqA2N0rVaKQ',
+      youtubeId: 'https://www.youtube.com/watch?v=-HSISMCynKs',
       ingredients: [
         '4 large eggs',
         '2 English muffins, split and toasted',
@@ -779,7 +779,7 @@ async function main() {
       popular: true,
       rating: 4.8,
       reviewsCount: 1567,
-      youtubeId: 'dH0k0PhFm5g',
+      youtubeId: 'https://www.youtube.com/watch?v=dH0k0PhFm5g',
       ingredients: [
         '200g frozen açaí pulp',
         '1 banana',
@@ -821,7 +821,7 @@ async function main() {
       popular: true,
       rating: 4.9,
       reviewsCount: 3102,
-      youtubeId: 'dH0k0PhFm5g',
+      youtubeId: 'https://www.youtube.com/watch?v=3AAdKl1UYZs',
       ingredients: [
         '400g spaghetti',
         '200g guanciale',
@@ -862,7 +862,7 @@ async function main() {
       popular: false,
       rating: 4.5,
       reviewsCount: 612,
-      youtubeId: 'dH0k0PhFm5g',
+      youtubeId: 'https://www.youtube.com/watch?v=xK8NLldQJDg',
       ingredients: [
         '2 cucumbers',
         '4 tomatoes',
@@ -906,7 +906,7 @@ async function main() {
       popular: true,
       rating: 4.8,
       reviewsCount: 1890,
-      youtubeId: 'dH0k0PhFm5g',
+      youtubeId: 'https://www.youtube.com/watch?v=s5fQEm4jS3c',
       ingredients: [
         '200g dark chocolate (70%)',
         '100g unsalted butter',
@@ -949,7 +949,7 @@ async function main() {
       popular: false,
       rating: 4.7,
       reviewsCount: 1045,
-      youtubeId: 'dH0k0PhFm5g',
+      youtubeId: 'https://www.youtube.com/watch?v=-cnfV7PwHH4',
       ingredients: [
         '400ml coconut milk',
         '3 tbsp green curry paste',
@@ -995,7 +995,7 @@ async function main() {
       popular: false,
       rating: 4.6,
       reviewsCount: 823,
-      youtubeId: 'dH0k0PhFm5g',
+      youtubeId: 'https://www.youtube.com/watch?v=Od6kogPw9sY',
       ingredients: [
         '500g white fish fillets',
         '8 small flour tortillas',

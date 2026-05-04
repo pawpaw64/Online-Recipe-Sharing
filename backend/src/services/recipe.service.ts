@@ -84,6 +84,7 @@ export async function listRecipes(filters: RecipeFilters) {
 
   const [recipes, total] = await prisma.$transaction([
     prisma.recipe.findMany({ where, orderBy, skip, take, select: recipeSelect }),
+    //select from recipe table with the where, orderBy, skip and take options, the result is stored in recipes variable, the total count of recipes matching the where condition is stored in total variable
     prisma.recipe.count({ where }),
   ])
 
