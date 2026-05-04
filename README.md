@@ -2,6 +2,165 @@
 
 A full-stack recipe-sharing platform — browse, post, save, and comment on recipes.
 
+# 🍳 Cookbook — UI/UX Design & Web App
+
+## 🎬 Demo Video
+
+<div align="center">
+  <a href="https://youtu.be/dbNmfc7hLMU">
+    <img src="https://img.youtube.com/vi/dbNmfc7hLMU/0.jpg" width="70%" />
+  </a>
+</div>
+
+---
+
+## 🚀 Overview
+
+**Cookbook** started as a **UI/UX design in Figma** and evolved into a **functional web application** where users can:
+
+* Discover recipes 🍲
+* View detailed cooking steps 📄
+* Share their own recipes ➕
+
+The goal was to bridge **design → real implementation**.
+
+---
+
+## 🌐 Live Website
+
+👉 *(Add your deployed link here )*
+Example:
+
+```
+https://your-project.vercel.app
+```
+
+---
+
+## 🎯 Design Goals
+
+* ✨ Minimal and clean interface
+* 🧭 Intuitive navigation
+* 🔄 Smooth user experience
+* 📖 Readable content layout
+* 💡 User-centered design
+
+---
+
+## 🧠 UX Strategy
+
+> 🔍 Discover → 📋 Explore → 🍳 Cook → ✍️ Share
+
+A simple, frictionless flow designed for all users.
+
+---
+
+## 🛠️ Tech Stack
+
+*(Edit based on what you used)*
+
+* Frontend: React 18 + TypeScript + Vite
+* Backend: Node.js + Express + TypeScript + Prisma
+* Styling: Tailwind CSS + shadcn/ui
+* Design: Figma
+
+---
+
+## ✨ Features
+
+* 🍲 Browse recipes
+* 🔎 Explore different dishes
+* 📄 View recipe details
+* ➕ Add your own recipe
+* 🎯 Clean and responsive UI
+
+---
+
+## 🖼️ UI Preview
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/64fbff90-ab6b-4b4a-be3f-c561cbabe142" width="45%" />
+  <img src="https://github.com/user-attachments/assets/79c9d65d-5153-4423-b97d-13481e2d388c" width="45%" />
+</p>
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/ab601a20-eec1-4ecc-9719-48e7649a5843" width="45%" />
+  <img src="https://github.com/user-attachments/assets/101f4389-39dc-4781-8564-253188051d8b" width="45%" />
+</p>
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/6b661ceb-1db7-46d8-8f8e-e7e21d36135c" width="60%" />
+</p>
+
+
+---
+
+## ⚙️ Installation & Setup
+
+```bash
+# Clone the repository
+git clone https://github.com/pawpaw64/Online-Recipe-Sharing.git
+
+# Go to project folder
+cd Online-Recipe-Sharing
+
+# Install dependencies
+npm install
+
+# Install backend + frontend dependencies
+npm install --prefix backend
+npm install --prefix frontend
+
+# Run the project
+npm run dev
+```
+
+---
+
+## 🧩 Design Process
+
+1. 🧠 Research
+2. ✏️ Wireframing
+3. 🎨 UI Design (Figma)
+4. 💻 Development
+5. 🔄 Iteration
+
+---
+
+## 📚 What I Learned
+
+* Turning **UI design into real product**
+* Improving **UX through implementation**
+* Building **clean and scalable UI**
+* Managing **design-to-code workflow**
+
+---
+
+## 🌟 Highlights
+
+* UI → Website transformation
+* Clean modern interface
+* Strong UX flow
+* Beginner-friendly design
+
+---
+
+## 🔗 Figma File
+
+👉 https://www.figma.com/proto/OTWCdNlbFpUHkXsiXmNUBp/Web-Project?page-id=0%3A1&node-id=127-10751&viewport=1164%2C289%2C0.11&t=9nh4pt1LoymVaTQX-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=107%3A438
+
+---
+
+## 📬 Feedback
+
+Feel free to share suggestions or improvements!
+
+---
+
+<p align="center">
+  ⭐ Star this repo if you like the project!
+</p>
+
+
 ## Tech Stack
 
 | Layer | Tech |
@@ -27,8 +186,11 @@ No database server needed — SQLite is a local file.
 ## step 1. Clone & Install
 
 ```bash
-git clone https://github.com/your-username/Online-Recipe-Sharing.git
+git clone https://github.com/pawpaw64/Online-Recipe-Sharing.git
 cd Online-Recipe-Sharing
+
+# Install root dependencies (runs both servers together)
+npm install
 
 # Install backend dependencies
 cd backend
@@ -47,7 +209,7 @@ npm install
 
 ```bash
 cd backend
-copy .env.example .env
+cp .env.example .env
 ```
 
 Open `backend/.env` and set these values:
@@ -58,7 +220,7 @@ CLIENT_URL=http://localhost:5173
 NODE_ENV=development
 
 # SQLite file path (no changes needed)
-DATABASE_URL=file:./prisma/dev.db
+DATABASE_URL=file:./dev.db
 
 # Use any long random strings (keep them secret)
 ACCESS_TOKEN_SECRET=your_random_secret_min_32_chars
@@ -85,7 +247,7 @@ AWS_SECRET_ACCESS_KEY=
 Create `frontend/.env`:
 
 ```env
-VITE_API_URL=http://localhost:4000/api/v1
+VITE_API_URL=/api/v1
 ```
 
 ---
@@ -98,7 +260,7 @@ Run these once from the `backend/` folder:
 cd backend
 
 # Create the SQLite database file and all tables
-npx prisma migrate dev --name init
+npx prisma migrate dev
 
 # Seed demo users and recipes
 npm run prisma:seed
