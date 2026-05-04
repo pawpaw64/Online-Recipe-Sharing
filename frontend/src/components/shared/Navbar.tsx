@@ -245,14 +245,14 @@ const Navbar = () => {
             </>
           ) : (
             <>
-              <button
+              <button /*Step 1- login button*/
                 type="button"
                 onClick={() => navigate("/auth")}
                 className="h-9 px-4 text-base font-medium text-muted-foreground hover:text-foreground transition-colors"
               >
                 Login
               </button>
-              <button
+              <button /*Step 1- Sign Up button*/
                 type="button"
                 onClick={() => navigate("/auth?tab=register")}
                 className="h-9 px-5 text-base font-medium bg-primary text-primary-foreground rounded-full hover:opacity-90 transition-opacity"

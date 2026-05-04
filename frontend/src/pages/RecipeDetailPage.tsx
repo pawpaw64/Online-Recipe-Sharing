@@ -49,8 +49,8 @@ export default function RecipeDetailPage() {
         onClick={() => navigate(-1)}
         className="mb-6 mt-4 flex items-center gap-1.5 text-sm text-black dark:text-white hover:text-primary dark:hover:text-primary transition-colors font-bold"
       >
-        <ArrowLeft className="h-4 w-4" />
-        
+        <ArrowLeft className="h-6 w-6" />
+        Back to All Recipes
       </button>
 
       <div className="mb-6 flex items-start justify-between gap-4">

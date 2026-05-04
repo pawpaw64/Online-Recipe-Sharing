@@ -5,7 +5,7 @@ import { useDebounce } from "@/hooks/useDebounce";
 import type { RecipeFilters } from "@/features/recipes/types";
 
 const categories = [
-  "All", "Breakfast", "Lunch", "Dinner", "Desserts",
+  "All", "Breakfast", "Lunch", "Dinner", "Snacks",
   "Appetizers", "Salads", "Soups", "Quick & Easy",
   "Healthy", "Vegan", "Gluten-Free",
 ];
