@@ -59,9 +59,11 @@ const HomePage = () => {
         <CreatorsSection />
       </section>
 
-      {/* 5. Share Recipe & Newsletter */}
+      {/* 5. Share Recipe */}
+      <ShareRecipeSection />
+
+      {/* 6. Newsletter / About */}
       <section id="about" className="scroll-mt-24">
-        <ShareRecipeSection />
         <Newsletter />
       </section>
 
