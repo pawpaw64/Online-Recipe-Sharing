@@ -22,6 +22,7 @@ export function RecipeCard({ recipe, isFavorited, onToggleFavorite, className }:
       transition={{ duration: 0.2 }}
       className={cn('group', className)}
     >
+      
       <Card className="overflow-hidden border-0 shadow-sm transition-shadow hover:shadow-md">
         <Link to={`/recipes/${recipe.id}`}>
           <div className="relative aspect-[4/3] overflow-hidden bg-muted">
@@ -58,7 +59,7 @@ export function RecipeCard({ recipe, isFavorited, onToggleFavorite, className }:
             )}
           </div>
         </Link>
-
+            /* if click on card title*/
         <CardContent className="p-3">
           <Link to={`/recipes/${recipe.id}`}>
             <h3 className="line-clamp-2 font-medium leading-snug hover:text-primary">{recipe.title}</h3>

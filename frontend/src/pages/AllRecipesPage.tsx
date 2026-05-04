@@ -21,12 +21,12 @@ export default function AllRecipesPage() {
   const recipes = data?.data
   const meta = data?.meta
 
-  return (
+  return ( /* All Recipes logo*/
     <div className="container py-16">
       <h1 className="mb-0 font-display text-4xl font-bold text-center text-primary">
         {initialAuthor
           ? (recipes?.[0]?.authorName ? `${recipes[0].authorName}'s Recipes` : 'Creator Recipes')
-          : 'All Recipes'}
+          : 'All Recipes'} 
       </h1>
 
       <SearchFilter
