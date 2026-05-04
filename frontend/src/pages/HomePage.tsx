@@ -8,7 +8,6 @@ import CategoryGrid from "@/features/recipes/components/CategoryGrid";
 import ShareRecipeSection from "@/features/recipes/components/ShareRecipeSection";
 import CreatorsSection from "@/features/recipes/components/CreatorsSection";
 import Newsletter from "@/features/recipes/components/Newsletter";
-import Footer from "@/components/shared/Footer";
 
 
 
@@ -64,7 +63,6 @@ const HomePage = () => {
       <section id="about" className="scroll-mt-24">
         <ShareRecipeSection />
         <Newsletter />
-        <Footer />
       </section>
 
       {showBackToTop && (
