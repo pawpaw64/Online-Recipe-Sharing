@@ -75,6 +75,15 @@ const Navbar = () => {
   }, [location.pathname, location.hash]);
 
   useEffect(() => {
+    if (location.pathname === "/recipes") {
+      const params = new URLSearchParams(location.search);
+      setSearchQuery(params.get("search") ?? "");
+      return;
+    }
+    setSearchQuery("");
+  }, [location.pathname, location.search]);
+
+  useEffect(() => {
     if (location.pathname !== "/") {
       setActiveSection("");
       return;
@@ -131,8 +140,25 @@ const Navbar = () => {
     const q = searchQuery.trim();
     if (!q) return;
     navigate(`/recipes?search=${encodeURIComponent(q)}`);
-    setSearchQuery("");
+    setSearchQuery(q);
     searchRef.current?.blur();
+  };
+
+  const handleClearSearch = () => {
+    setSearchQuery("");
+
+    if (location.pathname !== "/recipes") {
+      return;
+    }
+
+    const params = new URLSearchParams(location.search);
+    if (!params.has("search")) {
+      return;
+    }
+
+    params.delete("search");
+    const nextQuery = params.toString();
+    navigate(nextQuery ? `/recipes?${nextQuery}` : "/recipes", { replace: true });
   };
 
   const navBg = scrolled
@@ -184,7 +210,7 @@ const Navbar = () => {
           {searchQuery && (
             <button
               type="button"
-              onClick={() => setSearchQuery("")}
+              onClick={handleClearSearch}
               className="text-muted-foreground hover:text-foreground transition-colors p-1"
               aria-label="Clear search"
             >
@@ -327,7 +353,7 @@ const Navbar = () => {
                   className="flex-1 bg-transparent text-sm outline-none"
                 />
                 {searchQuery && (
-                  <button type="button" onClick={() => setSearchQuery("")}>
+                  <button type="button" onClick={handleClearSearch}>
                     <X className="w-3.5 h-3.5 text-muted-foreground" />
                   </button>
                 )}

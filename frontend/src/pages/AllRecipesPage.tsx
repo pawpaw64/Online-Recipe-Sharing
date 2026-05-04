@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import SearchFilter from '@/components/shared/SearchFilter'
 import { RecipeGrid } from '@/components/shared/RecipeGrid'
@@ -11,9 +11,47 @@ import type { RecipeFilters } from '@/features/recipes/types'
 export default function AllRecipesPage() {
   const { user } = useAuth()
   const [searchParams] = useSearchParams()
-  const initialCategory = searchParams.get('category') ?? undefined
-  const initialAuthor = searchParams.get('author') ?? undefined
-  const [filters, setFilters] = useState<RecipeFilters>({ page: 1, limit: 12, category: initialCategory, authorId: initialAuthor })
+  const urlFilters = useMemo(
+    () => ({
+      search: searchParams.get('search') ?? undefined,
+      category: searchParams.get('category') ?? undefined,
+      authorId: searchParams.get('author') ?? undefined,
+    }),
+    [searchParams],
+  )
+  const [filters, setFilters] = useState<RecipeFilters>({
+    page: 1,
+    limit: 12,
+    search: urlFilters.search,
+    category: urlFilters.category,
+    authorId: urlFilters.authorId,
+  })
+
+  useEffect(() => {
+    setFilters((prev) => {
+      const next: RecipeFilters = {
+        ...prev,
+        page: 1,
+        limit: 12,
+        search: urlFilters.search,
+        category: urlFilters.category,
+        authorId: urlFilters.authorId,
+      }
+
+      if (
+        prev.search === next.search &&
+        prev.category === next.category &&
+        prev.authorId === next.authorId &&
+        prev.page === next.page &&
+        prev.limit === next.limit
+      ) {
+        return prev
+      }
+
+      return next
+    })
+  }, [urlFilters])
+
   const { data, isLoading } = useRecipes(filters)
   const { data: favoriteIds } = useFavorites()
   const { mutate: toggleFavorite } = useToggleFavorite()
@@ -24,7 +62,7 @@ export default function AllRecipesPage() {
   return ( /* All Recipes logo*/
     <div className="container py-16">
       <h1 className="mb-0 font-display text-4xl font-bold text-center text-primary">
-        {initialAuthor
+        {urlFilters.authorId
           ? (recipes?.[0]?.authorName ? `${recipes[0].authorName}'s Recipes` : 'Creator Recipes')
           : 'All Recipes'} 
       </h1>
