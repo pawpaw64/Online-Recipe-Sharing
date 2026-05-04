@@ -184,7 +184,7 @@ const Navbar = () => {
               type="button"
               onClick={() => handleNavigate(link.href)}
               className={cn(
-                "text-sm font-medium transition-colors hover:text-primary",
+                "text-base font-medium transition-colors hover:text-primary",
                 isNavItemActive(link.section, link.href) ? "text-primary" : "text-black dark:text-white",
               )}
             >
@@ -248,14 +248,14 @@ const Navbar = () => {
               <button
                 type="button"
                 onClick={() => navigate("/auth")}
-                className="h-9 px-4 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                className="h-9 px-4 text-base font-medium text-muted-foreground hover:text-foreground transition-colors"
               >
                 Login
               </button>
               <button
                 type="button"
                 onClick={() => navigate("/auth?tab=register")}
-                className="h-9 px-5 text-sm font-medium bg-primary text-primary-foreground rounded-full hover:opacity-90 transition-opacity"
+                className="h-9 px-5 text-base font-medium bg-primary text-primary-foreground rounded-full hover:opacity-90 transition-opacity"
               >
                 Sign Up
               </button>
@@ -289,7 +289,7 @@ const Navbar = () => {
                   type="button"
                   onClick={() => handleNavigate(link.href)}
                   className={cn(
-                    "block w-full rounded-2xl px-4 py-3 text-left text-sm font-medium transition-colors",
+                    "block w-full rounded-2xl px-4 py-3 text-left text-base font-bold transition-colors",
                     isNavItemActive(link.section, link.href)
                       ? "bg-primary/10 text-primary"
                       : "text-black dark:text-white hover:bg-secondary",
