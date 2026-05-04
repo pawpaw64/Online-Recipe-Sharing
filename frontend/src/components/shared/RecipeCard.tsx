@@ -22,7 +22,7 @@ export function RecipeCard({ recipe, isFavorited, onToggleFavorite, className }:
       transition={{ duration: 0.2 }}
       className={cn('group', className)}
     >
-      
+       /* if click on card Image*/
       <Card className="overflow-hidden border-0 shadow-sm transition-shadow hover:shadow-md">
         <Link to={`/recipes/${recipe.id}`}>
           <div className="relative aspect-[4/3] overflow-hidden bg-muted">
