@@ -13,12 +13,18 @@ const allowedOrigins = new Set([
   'http://localhost:5173',
   'http://127.0.0.1:5173',
 ])
+const isDev = env.NODE_ENV !== 'production'
 
 // Security
 app.use(helmet())
 app.use(
   cors({
     origin(origin, callback) {
+      if (isDev) {
+        callback(null, true)
+        return
+      }
+
       if (!origin || allowedOrigins.has(origin)) {
         callback(null, true)
         return

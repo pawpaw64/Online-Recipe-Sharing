@@ -59,9 +59,9 @@ A simple, frictionless flow designed for all users.
 
 *(Edit based on what you used)*
 
-* Frontend: HTML / CSS / JavaScript
-* Framework: React / Next.js *(if used)*
-* Styling: Tailwind CSS / CSS
+* Frontend: React 18 + TypeScript + Vite
+* Backend: Node.js + Express + TypeScript + Prisma
+* Styling: Tailwind CSS + shadcn/ui
 * Design: Figma
 
 ---
@@ -98,16 +98,20 @@ A simple, frictionless flow designed for all users.
 
 ```bash
 # Clone the repository
-git clone https://github.com/Hasib30293/CookBook.git
+git clone https://github.com/pawpaw64/Online-Recipe-Sharing.git
 
 # Go to project folder
-cd CookBook
+cd Online-Recipe-Sharing
 
-# Install dependencies (if using React)
+# Install dependencies
 npm install
 
+# Install backend + frontend dependencies
+npm install --prefix backend
+npm install --prefix frontend
+
 # Run the project
-npm start
+npm run dev
 ```
 
 ---
@@ -182,8 +186,11 @@ No database server needed — SQLite is a local file.
 ## step 1. Clone & Install
 
 ```bash
-git clone https://github.com/your-username/Online-Recipe-Sharing.git
+git clone https://github.com/pawpaw64/Online-Recipe-Sharing.git
 cd Online-Recipe-Sharing
+
+# Install root dependencies (runs both servers together)
+npm install
 
 # Install backend dependencies
 cd backend
@@ -202,7 +209,7 @@ npm install
 
 ```bash
 cd backend
-copy .env.example .env
+cp .env.example .env
 ```
 
 Open `backend/.env` and set these values:
@@ -213,7 +220,7 @@ CLIENT_URL=http://localhost:5173
 NODE_ENV=development
 
 # SQLite file path (no changes needed)
-DATABASE_URL=file:./prisma/dev.db
+DATABASE_URL=file:./dev.db
 
 # Use any long random strings (keep them secret)
 ACCESS_TOKEN_SECRET=your_random_secret_min_32_chars
@@ -240,7 +247,7 @@ AWS_SECRET_ACCESS_KEY=
 Create `frontend/.env`:
 
 ```env
-VITE_API_URL=http://localhost:4000/api/v1
+VITE_API_URL=/api/v1
 ```
 
 ---
@@ -253,7 +260,7 @@ Run these once from the `backend/` folder:
 cd backend
 
 # Create the SQLite database file and all tables
-npx prisma migrate dev --name init
+npx prisma migrate dev
 
 # Seed demo users and recipes
 npm run prisma:seed

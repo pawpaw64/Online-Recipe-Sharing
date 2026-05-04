@@ -15,7 +15,7 @@ export function configureAxios(
 }
 
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL as string,
+  baseURL: (import.meta.env.VITE_API_URL as string) || '/api/v1',
   withCredentials: true, // send cookies on cross-origin requests
 })
 
