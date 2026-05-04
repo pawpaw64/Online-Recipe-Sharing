@@ -316,7 +316,7 @@ const Navbar = () => {
               className={cn(
                 "relative text-l font-medium transition-colors hover:text-primary py-1",
                 isNavItemActive(link.section, link.href)
-                  ? "text-primary font-semibold"
+                  ? "text-primary font-bold"
                   : "text-muted-foreground hover:text-primary"
               )}
             >
