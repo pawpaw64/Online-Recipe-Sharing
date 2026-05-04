@@ -143,7 +143,7 @@ const Navbar = () => {
     <nav className={cn("fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-border/60", navBg)}>
 
       {/* ── Row 1: Logo · Search · Auth (Desktop Layout) ──────────────────────────────── */}
-      <div className="container mx-auto flex items-center justify-between gap-4 px-4 lg:px-8 h-16 lg:h-20">
+      <div className="container mx-auto flex items-center justify-center gap-4 px-4 lg:px-8 h-16 lg:h-20">
         
         {/* Left: Logo - Larger size */}
         <Link to="/" className="shrink-0 flex items-center group">
@@ -281,7 +281,7 @@ const Navbar = () => {
 
       {/* ── Row 2: Nav links (desktop) ────────────────────────────────── */}
       <div className="hidden md:block ">
-        <div className="container mx-auto flex items-center justify-start gap-8 px-4 lg:px-8 h-11">
+        <div className="container mx-auto flex items-center justify-center gap-8 px-4 lg:px-8 h-11">
           {navLinks.map((link) => (
             <button
               key={link.section}
