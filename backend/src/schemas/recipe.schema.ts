@@ -25,7 +25,7 @@ export const createRecipeSchema = z.object({
     category: z.string().max(100).optional(),
     servings: z.number().int().min(1).max(100).default(1),
     calories: z.number().int().min(0).default(0),
-    youtubeId: z.string().max(50).optional(),
+    youtubeId: z.string().max(200).optional(),
     popular: z.boolean().default(false),
     ingredients: z.array(ingredientSchema).min(1),
     instructions: z.array(instructionSchema).min(1),

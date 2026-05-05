@@ -17,6 +17,7 @@ const ProfilePage = lazy(() => import('@/pages/ProfilePage'))
 const SavedRecipesPage = lazy(() => import('@/pages/SavedRecipesPage'))
 const CategoriesPage = lazy(() => import('@/pages/CategoriesPage'))
 const NotFoundPage = lazy(() => import('@/pages/NotFoundPage'))
+const EditRecipePage = lazy(() => import('@/pages/EditRecipePage'))
 
 const wrap = (element: React.ReactNode) => (
   <Suspense fallback={<PageLoader />}>{element}</Suspense>
@@ -29,6 +30,14 @@ export const router = createBrowserRouter([
       { path: '/', element: wrap(<HomePage />) },
       { path: '/recipes', element: wrap(<AllRecipesPage />) },
       { path: '/recipes/:id', element: wrap(<RecipeDetailPage />) },
+      {
+        path: '/recipes/:id/edit',
+        element: wrap(
+          <ProtectedRoute>
+            <EditRecipePage />
+          </ProtectedRoute>,
+        ),
+      },
       { path: '/community', element: wrap(<CommunityPage />) },
       { path: '/categories', element: wrap(<CategoriesPage />) },
       {
