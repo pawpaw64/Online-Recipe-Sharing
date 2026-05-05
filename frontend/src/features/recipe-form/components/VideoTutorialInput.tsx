@@ -7,7 +7,7 @@ function extractYouTubeId(input: string): string {
   const trimmed = input.trim()
   if (/^[a-zA-Z0-9_-]{11}$/.test(trimmed)) return trimmed
   const match = trimmed.match(
-    /(?:youtube\.com\/(?:watch\?(?:.*&)?v=|embed\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/,
+    /(?:youtube\.com\/(?:watch\?(?:.*&)?v=|embed\/|shorts\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/,
   )
   return match ? match[1] : trimmed
 }
